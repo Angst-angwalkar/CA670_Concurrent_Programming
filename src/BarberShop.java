@@ -26,12 +26,12 @@ public class BarberShop {
         {
             if (waitingCustomers.size() < maxChairs)
             {
-                LOGGER.log(Level.INFO, "Customer with Thread name " + Thread.currentThread().getName() + " has entered the shop.");
+                LOGGER.log(Level.INFO, "Customer with Thread name " + Thread.currentThread().getName().toUpperCase() + " has entered the shop.");
                 waitingCustomers.add(new Customers(this));              // adding the customers to the customers waiting line.
             }
             else
             {
-                LOGGER.log(Level.INFO, "Customer with Thread name " + Thread.currentThread().getName() + " has left because the shop is full.");  // customer isn't added if there are no remaining chairs waiting.
+                LOGGER.log(Level.INFO, "Customer with Thread name " + Thread.currentThread().getName().toUpperCase() + " has left because the shop is full.");  // customer isn't added if there are no remaining chairs waiting.
             }
         }
     }
@@ -40,7 +40,7 @@ public class BarberShop {
     {
         synchronized (lock)
         {
-            LOGGER.log(Level.INFO, "Customer with Thread name " + Thread.currentThread().getName() + " has left after being served.");
+            LOGGER.log(Level.INFO, "Customer with Thread name " + Thread.currentThread().getName().toUpperCase() + " has left after being served.");
         }
     }
 
@@ -50,8 +50,9 @@ public class BarberShop {
             if (!waitingCustomers.isEmpty())
             {
                 System.out.println("****");
+//                LOGGER.log(Level.INFO, "****");
                 Customers customer = waitingCustomers.remove(0);       // the customer is removed from the waiting list and added to the customers being served.
-                LOGGER.log(Level.INFO, "Barber with Thread name" + Thread.currentThread().getName() + " serving a customer.");
+                LOGGER.log(Level.INFO, "Barber with Thread name " + Thread.currentThread().getName().toUpperCase() + " serving a customer.");
                 servedCustomers++;
                 customer.run();
             }
@@ -88,30 +89,42 @@ public class BarberShop {
         }
 
 
-        int cores = Runtime.getRuntime().availableProcessors();
-        System.out.println("No of cores in this device: " + cores);
-        System.out.println("No of chairs: " + noOfMaxChairs);
-        System.out.println("No of barbers: " + noOfBarbers);
-
         if (noOfMaxChairs <= 0)
         {
             noOfMaxChairs = 9; // 9 chairs if the command line argument is negative or 0
         }
 
-        BarberShop barberShop = new BarberShop(noOfMaxChairs);
-        ExecutorService executor = Executors.newCachedThreadPool();
-        executor.submit(new Barbers(barberShop));
-
-
         if (noOfBarbers <= 0)
         {
-            noOfBarbers = 3; // 3 chairs if the command line argument is negative or 0
+            noOfBarbers = 3; // 3 Barbers if the command line argument is negative or 0
         }
 
-        for (int i = 0; i < noOfBarbers; i++) {
-            executor.submit(new Customers(barberShop));
-        }
+        Barbers[] barber = new Barbers[Integer.parseInt(args[1])];
+        int cores = Runtime.getRuntime().availableProcessors();
+        System.out.println("No of cores in this device: " + cores);
+        System.out.println("No of chairs: " + noOfMaxChairs);
+        System.out.println("No of barbers: " + noOfBarbers);
 
+
+        BarberShop barberShop = new BarberShop(noOfMaxChairs);
+        ExecutorService executor = Executors.newFixedThreadPool(cores);
+
+        executor.submit(new Barbers(barberShop));
+
+        executor.execute(() -> {
+
+
+            for (int i = 0; i < Integer.parseInt(args[1]); i++) {
+                barber[i] = new Barbers(barberShop);
+                Thread thbarber = new Thread(barber[i]);
+                thbarber.start();
+            }
+            Customers cg = new Customers(barberShop);
+            Thread custThread = new Thread(cg);
+            custThread.start();
+
+
+        });
         LOGGER.log(Level.INFO, "No. of total served customers till now: " + barberShop.servedCustomers);
         executor.shutdown();
     }

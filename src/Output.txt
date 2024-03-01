@@ -1,0 +1,106 @@
+❯ java BarberShop 5 12
+No of cores in this device: 16
+No of chairs: 12
+No of barbers: 5
+Mar 01, 2024 8:47:23 PM BarberShop serveCustomer
+INFO: Barber sleeps, no customers.
+Mar 01, 2024 8:47:23 PM BarberShop main
+INFO: No. of total served customers till now: 0
+Mar 01, 2024 8:47:23 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-12 has entered the shop.
+****
+Mar 01, 2024 8:47:23 PM BarberShop serveCustomer
+INFO: Barber with Thread name THREAD-11 serving a customer.
+Mar 01, 2024 8:47:23 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-11 has entered the shop.
+Mar 01, 2024 8:47:24 PM BarberShop leaveShop
+INFO: Customer with Thread name THREAD-11 has left after being served.
+****
+Mar 01, 2024 8:47:24 PM BarberShop serveCustomer
+INFO: Barber with Thread name THREAD-10 serving a customer.
+Mar 01, 2024 8:47:24 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-10 has entered the shop.
+Mar 01, 2024 8:47:25 PM BarberShop leaveShop
+INFO: Customer with Thread name THREAD-10 has left after being served.
+****
+Mar 01, 2024 8:47:25 PM BarberShop serveCustomer
+INFO: Barber with Thread name THREAD-9 serving a customer.
+Mar 01, 2024 8:47:25 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-9 has entered the shop.
+Mar 01, 2024 8:47:26 PM BarberShop leaveShop
+INFO: Customer with Thread name THREAD-9 has left after being served.
+****
+Mar 01, 2024 8:47:26 PM BarberShop serveCustomer
+INFO: Barber with Thread name THREAD-8 serving a customer.
+Mar 01, 2024 8:47:26 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-8 has entered the shop.
+Mar 01, 2024 8:47:27 PM BarberShop leaveShop
+INFO: Customer with Thread name THREAD-8 has left after being served.
+****
+Mar 01, 2024 8:47:27 PM BarberShop serveCustomer
+INFO: Barber with Thread name THREAD-7 serving a customer.
+Mar 01, 2024 8:47:27 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-7 has entered the shop.
+Mar 01, 2024 8:47:28 PM BarberShop leaveShop
+INFO: Customer with Thread name THREAD-7 has left after being served.
+****
+Mar 01, 2024 8:47:28 PM BarberShop serveCustomer
+INFO: Barber with Thread name THREAD-6 serving a customer.
+Mar 01, 2024 8:47:28 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-6 has entered the shop.
+Mar 01, 2024 8:47:29 PM BarberShop leaveShop
+INFO: Customer with Thread name THREAD-6 has left after being served.
+****
+Mar 01, 2024 8:47:29 PM BarberShop serveCustomer
+INFO: Barber with Thread name THREAD-5 serving a customer.
+Mar 01, 2024 8:47:29 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-5 has entered the shop.
+Mar 01, 2024 8:47:30 PM BarberShop leaveShop
+INFO: Customer with Thread name THREAD-5 has left after being served.
+****
+Mar 01, 2024 8:47:30 PM BarberShop serveCustomer
+INFO: Barber with Thread name THREAD-4 serving a customer.
+Mar 01, 2024 8:47:30 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-4 has entered the shop.
+Mar 01, 2024 8:47:31 PM BarberShop leaveShop
+INFO: Customer with Thread name THREAD-4 has left after being served.
+****
+Mar 01, 2024 8:47:31 PM BarberShop serveCustomer
+INFO: Barber with Thread name THREAD-3 serving a customer.
+Mar 01, 2024 8:47:31 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-3 has entered the shop.
+Mar 01, 2024 8:47:32 PM BarberShop leaveShop
+INFO: Customer with Thread name THREAD-3 has left after being served.
+****
+Mar 01, 2024 8:47:32 PM BarberShop serveCustomer
+INFO: Barber with Thread name THREAD-2 serving a customer.
+Mar 01, 2024 8:47:32 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-2 has entered the shop.
+Mar 01, 2024 8:47:33 PM BarberShop leaveShop
+INFO: Customer with Thread name THREAD-2 has left after being served.
+****
+Mar 01, 2024 8:47:33 PM BarberShop serveCustomer
+INFO: Barber with Thread name THREAD-1 serving a customer.
+Mar 01, 2024 8:47:33 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-1 has entered the shop.
+Mar 01, 2024 8:47:34 PM BarberShop leaveShop
+INFO: Customer with Thread name THREAD-1 has left after being served.
+****
+Mar 01, 2024 8:47:34 PM BarberShop serveCustomer
+INFO: Barber with Thread name THREAD-0 serving a customer.
+Mar 01, 2024 8:47:34 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-0 has entered the shop.
+Mar 01, 2024 8:47:35 PM BarberShop leaveShop
+INFO: Customer with Thread name THREAD-0 has left after being served.
+****
+Mar 01, 2024 8:47:35 PM BarberShop serveCustomer
+INFO: Barber with Thread name THREAD-2 serving a customer.
+Mar 01, 2024 8:47:35 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-2 has entered the shop.
+Mar 01, 2024 8:47:36 PM BarberShop leaveShop
+INFO: Customer with Thread name THREAD-2 has left after being served.
+****
+Mar 01, 2024 8:47:36 PM BarberShop serveCustomer
+INFO: Barber with Thread name THREAD-3 serving a customer.
+Mar 01, 2024 8:47:36 PM BarberShop enterShop
+INFO: Customer with Thread name THREAD-3 has entered the shop.
