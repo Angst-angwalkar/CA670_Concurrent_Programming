@@ -1,11 +1,7 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,12 +26,12 @@ public class BarberShop {
         {
             if (waitingCustomers.size() < maxChairs)
             {
-                LOGGER.log(Level.INFO, "Customer has entered the shop.");
-                waitingCustomers.add(new Customers(this));
+                LOGGER.log(Level.INFO, "Customer with Thread name " + Thread.currentThread().getName() + " has entered the shop.");
+                waitingCustomers.add(new Customers(this));              // adding the customers to the customers waiting line.
             }
             else
             {
-                LOGGER.log(Level.INFO, "Customer has left because the shop is full.");
+                LOGGER.log(Level.INFO, "Customer with Thread name " + Thread.currentThread().getName() + " has left because the shop is full.");  // customer isn't added if there are no remaining chairs waiting.
             }
         }
     }
@@ -44,7 +40,7 @@ public class BarberShop {
     {
         synchronized (lock)
         {
-            LOGGER.log(Level.INFO, "Customer has left the shop.");
+            LOGGER.log(Level.INFO, "Customer with Thread name " + Thread.currentThread().getName() + " has left after being served.");
         }
     }
 
@@ -53,27 +49,28 @@ public class BarberShop {
         {
             if (!waitingCustomers.isEmpty())
             {
-                Customers customer = waitingCustomers.remove(0);
-                LOGGER.log(Level.INFO, "Barber serving a customer.");
+                System.out.println("****");
+                Customers customer = waitingCustomers.remove(0);       // the customer is removed from the waiting list and added to the customers being served.
+                LOGGER.log(Level.INFO, "Barber with Thread name" + Thread.currentThread().getName() + " serving a customer.");
                 servedCustomers++;
                 customer.run();
             }
             else
             {
-                LOGGER.log(Level.INFO, "Barber sleeps, no customers.");
+                LOGGER.log(Level.INFO, "Barber sleeps, no customers."); // Barber sleeps in his chair when there are no more customers for serving.
                 lock.wait();
             }
         }
     }
 
-    public static void main(String[] args) //throws IOException
+    public static void main(String[] args)
     {
 
         int noOfMaxChairs = 0;
         int noOfBarbers = 0;
         try
         {
-            noOfBarbers = Integer.parseInt(args[0]);
+            noOfBarbers = Integer.parseInt(args[0]);            //fetching the command line argument for no of barbers.
         }
         catch (NumberFormatException nFE)
         {
@@ -82,7 +79,7 @@ public class BarberShop {
         }
         try
         {
-            noOfMaxChairs = Integer.parseInt(args[1]);
+            noOfMaxChairs = Integer.parseInt(args[1]);          //fetching the command line argument for no of chairs for customers.
         }
         catch (NumberFormatException nFE)
         {
@@ -93,12 +90,12 @@ public class BarberShop {
 
         int cores = Runtime.getRuntime().availableProcessors();
         System.out.println("No of cores in this device: " + cores);
-        System.out.println("No of chairs entered: " + noOfMaxChairs);
-        System.out.println("No of barbers entered: " + noOfBarbers);
+        System.out.println("No of chairs: " + noOfMaxChairs);
+        System.out.println("No of barbers: " + noOfBarbers);
 
         if (noOfMaxChairs <= 0)
         {
-            noOfMaxChairs = 3; // 3 chairs if the command line argument is negative or 0
+            noOfMaxChairs = 9; // 9 chairs if the command line argument is negative or 0
         }
 
         BarberShop barberShop = new BarberShop(noOfMaxChairs);

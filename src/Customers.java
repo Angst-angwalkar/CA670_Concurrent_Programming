@@ -12,7 +12,7 @@ public class Customers implements Runnable {
         try
         {
             barberShop.enterShop();
-            TimeUnit.SECONDS.sleep(1); // Simulating hair cutting time
+            TimeUnit.SECONDS.sleep(1); // Simulation for hair cutting time.
             barberShop.leaveShop();
         }
         catch (InterruptedException e)
