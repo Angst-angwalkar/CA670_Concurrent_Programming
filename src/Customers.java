@@ -1,8 +1,4 @@
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.Random;
 
 public class Customers implements Runnable {
     private final BarberShop barberShop;
@@ -13,11 +9,14 @@ public class Customers implements Runnable {
 
     @Override
     public void run() {
-        try {
+        try
+        {
             barberShop.enterShop();
             TimeUnit.SECONDS.sleep(1); // Simulating hair cutting time
             barberShop.leaveShop();
-        } catch (InterruptedException e) {
+        }
+        catch (InterruptedException e)
+        {
             Thread.currentThread().interrupt();
         }
     }
