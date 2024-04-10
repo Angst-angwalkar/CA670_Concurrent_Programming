@@ -32,13 +32,13 @@ public class ThreadedStrassen {
             } else {
                 int halfSize = size / 2;
                 StrassenRecursiveTask[] tasks = new StrassenRecursiveTask[7];
-                tasks[0] = new StrassenRecursiveTask(A, B, startRowA, startColA, startRowB, startColB, halfSize); // P1
-                tasks[1] = new StrassenRecursiveTask(A, B, startRowA, startColA + halfSize, startRowB + halfSize, startColB, halfSize); // P2
-                tasks[2] = new StrassenRecursiveTask(A, B, startRowA, startColA, startRowB, startColB + halfSize, halfSize); // P3
-                tasks[3] = new StrassenRecursiveTask(A, B, startRowA, startColA + halfSize, startRowB + halfSize, startColB + halfSize, halfSize); // P4
-                tasks[4] = new StrassenRecursiveTask(A, B, startRowA + halfSize, startColA, startRowB, startColB, halfSize); // P5
-                tasks[5] = new StrassenRecursiveTask(A, B, startRowA + halfSize, startColA + halfSize, startRowB + halfSize, startColB, halfSize); // P6
-                tasks[6] = new StrassenRecursiveTask(A, B, startRowA + halfSize, startColA, startRowB, startColB + halfSize, halfSize); // P7
+                tasks[0] = new StrassenRecursiveTask(A, B, startRowA, startColA, startRowB, startColB, halfSize);
+                tasks[1] = new StrassenRecursiveTask(A, B, startRowA, startColA + halfSize, startRowB + halfSize, startColB, halfSize);
+                tasks[2] = new StrassenRecursiveTask(A, B, startRowA, startColA, startRowB, startColB + halfSize, halfSize);
+                tasks[3] = new StrassenRecursiveTask(A, B, startRowA, startColA + halfSize, startRowB + halfSize, startColB + halfSize, halfSize);
+                tasks[4] = new StrassenRecursiveTask(A, B, startRowA + halfSize, startColA, startRowB, startColB, halfSize);
+                tasks[5] = new StrassenRecursiveTask(A, B, startRowA + halfSize, startColA + halfSize, startRowB + halfSize, startColB, halfSize);
+                tasks[6] = new StrassenRecursiveTask(A, B, startRowA + halfSize, startColA, startRowB, startColB + halfSize, halfSize);
                 for (StrassenRecursiveTask task : tasks) {
                     task.fork();
                 }
@@ -74,7 +74,6 @@ public class ThreadedStrassen {
         return C;
     }
 
-    // Add two matrices
     public static int[][] addMatrices(int[][] A, int[][] B) {
         int n = A.length;
         int[][] C = new int[n][n];
@@ -86,7 +85,6 @@ public class ThreadedStrassen {
         return C;
     }
 
-    // Subtract one matrix from another
     public static int[][] subMatrices(int[][] A, int[][] B) {
         int n = A.length;
         int[][] C = new int[n][n];
@@ -117,17 +115,6 @@ public class ThreadedStrassen {
         }
         return matrix;
     }
-
-    // Display a matrix
-    private static void displayMatrix(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                System.out.print(matrix[i][j] + "\t");
-            }
-            System.out.println();
-        }
-    }
-
 
 
     public static void main(String[] args) throws IOException{

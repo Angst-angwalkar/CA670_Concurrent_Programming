@@ -1,8 +1,6 @@
 import subprocess
-import numpy as np
 import matplotlib.pyplot as plt
 import sys
-import os
 
 def measure_exec_time(rows, cols, prog):
     if prog == "java":
